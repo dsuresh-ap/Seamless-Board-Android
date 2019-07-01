@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/boardFragment">
+    <fragment
+        android:id="@+id/boardFragment"
+        android:name="com.uipath.seamlessboard.presentation.board.BoardFragment"
+        android:label="BoardFragment">
+        <action
+            android:id="@+id/action_boardFragment_to_restaurantFragment"
+            app:destination="@id/restaurantFragment" />
+        <action
+            android:id="@+id/action_boardFragment_to_addReviewActivity"
+            app:destination="@id/addReviewActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/restaurantFragment"
+        android:name="com.uipath.seamlessboard.presentation.restaurant.RestaurantFragment"
+        android:label="RestaurantFragment">
+        <argument
+            android:name="restaurantId"
+            app:argType="long" />
+    </fragment>
+    <activity
+        android:id="@+id/addReviewActivity"
+        android:name="com.uipath.seamlessboard.presentation.addreview.AddReviewActivity"
+        android:label="AddReviewActivity" />
+</navigation>

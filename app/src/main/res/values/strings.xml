@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Seamless Board</string>
+    <string name="food">Food</string>
+    <string name="delivery">Delivery</string>
+    <string name="name">Restaurant Name</string>
+    <string name="enter_a_review">Enter a Review</string>
+    <string name="reviews_empty_state">No reviews are available. Create the first one!</string>
+    <string name="rating_format">%1$.1f</string>
+    <string name="add_review_restaurant_name_error">Restaurant Name Required</string>
+    <string name="add_review_restaurant_review_error">Review Required</string>
+    <string name="add_review">Add Review</string>
+</resources>
