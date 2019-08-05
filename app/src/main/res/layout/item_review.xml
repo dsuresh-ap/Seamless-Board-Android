@@ -1,72 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="16dp">
+    android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:id="@+id/ratingTextLayout"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:padding="16dp">
 
-        <TextView
-            android:id="@+id/foodRatingTextView"
+        <LinearLayout
+            android:id="@+id/ratingTextLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/food" />
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/foodRatingTextView"
+                style="@style/TextAppearance.MaterialComponents.Body2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/food" />
+
+            <TextView
+                android:id="@+id/deliveryRatingTextView"
+                style="@style/TextAppearance.MaterialComponents.Body2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/delivery" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@id/ratingTextLayout"
+            app:layout_constraintStart_toEndOf="@id/ratingTextLayout"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RatingBar
+                android:id="@+id/foodRatingBar"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="36dp"
+                android:layout_weight="1"
+                android:isIndicator="true" />
+
+
+            <RatingBar
+                android:id="@+id/deliveryRatingBar"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="36dp"
+                android:layout_weight="1"
+                android:isIndicator="true" />
+
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/deliveryRatingTextView"
-            android:layout_width="wrap_content"
+            android:id="@+id/reviewTextView"
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/delivery" />
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ratingTextLayout"
+            tools:text="This is a sample review." />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="@id/ratingTextLayout"
-        app:layout_constraintStart_toEndOf="@id/ratingTextLayout"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <RatingBar
-            android:id="@+id/foodRatingBar"
-            style="?android:attr/ratingBarStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginStart="36dp"
-            android:layout_weight="1"
-            android:isIndicator="true" />
-
-
-        <RatingBar
-            android:id="@+id/deliveryRatingBar"
-            style="?android:attr/ratingBarStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginStart="36dp"
-            android:layout_weight="1"
-            android:isIndicator="true" />
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/reviewTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ratingTextLayout"
-        tools:text="This is a sample review." />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

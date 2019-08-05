@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.uipath.seamlessboard.R
+import com.uipath.seamlessboard.misc.SpaceItemDecoration
 import com.uipath.seamlessboard.presentation.restaurant.adapter.ReviewAdapter
 import kotlinx.android.synthetic.main.fragment_restaurant.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -44,6 +45,7 @@ class RestaurantFragment : Fragment() {
             adapter.submitList(it)
         })
         reviewRecyclerView.layoutManager = LinearLayoutManager(context)
+        reviewRecyclerView.addItemDecoration(SpaceItemDecoration(resources.getDimensionPixelOffset(R.dimen.grid_item_space)))
         reviewRecyclerView.adapter = adapter
     }
 }

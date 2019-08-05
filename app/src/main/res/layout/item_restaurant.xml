@@ -13,10 +13,10 @@
 
         <TextView
             android:id="@+id/nameTextView"
+            style="@style/TextAppearance.MaterialComponents.Body1"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:gravity="center"
-            android:textSize="14sp"
             app:layout_constraintBottom_toTopOf="@+id/ratingImageView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -33,10 +33,10 @@
 
         <TextView
             android:id="@+id/ratingTextView"
+            style="@style/TextAppearance.MaterialComponents.Caption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/ratingImageView"
             app:layout_constraintTop_toTopOf="@id/ratingImageView"

@@ -1,6 +1,7 @@
 package com.uipath.seamlessboard
 
 import android.app.Application
+import androidx.appcompat.app.AppCompatDelegate
 import com.uipath.seamlessboard.injection.appModule
 import com.uipath.seamlessboard.injection.repoModule
 import com.uipath.seamlessboard.injection.roomModule
@@ -12,6 +13,8 @@ class BoardApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
 
         startKoin {
             androidLogger()

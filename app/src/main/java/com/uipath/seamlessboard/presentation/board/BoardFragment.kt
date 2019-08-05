@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.uipath.seamlessboard.R
 import com.uipath.seamlessboard.databinding.FragmentBoardBinding
+import com.uipath.seamlessboard.misc.SpaceItemDecoration
 import com.uipath.seamlessboard.presentation.board.adapter.BoardAdapter
 import kotlinx.android.synthetic.main.fragment_board.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -61,7 +62,8 @@ class BoardFragment : Fragment() {
             adapter.submitList(it)
             emptyStateTextView.visibility = if (it.isEmpty()) View.VISIBLE else View.GONE
         })
-        boardRecyclerView.layoutManager = GridLayoutManager(context, 3)
+        boardRecyclerView.layoutManager = GridLayoutManager(context, 2)
+        boardRecyclerView.addItemDecoration(SpaceItemDecoration(resources.getDimensionPixelOffset(R.dimen.grid_item_space)))
         boardRecyclerView.adapter = adapter
     }
 }
