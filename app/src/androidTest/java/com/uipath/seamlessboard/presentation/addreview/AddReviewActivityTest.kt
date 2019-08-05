@@ -41,7 +41,7 @@ class AddReviewActivityTest : KoinTest {
 
     @Test
     fun hideNameError_withName_whenSaveClicked() {
-        onView(withId(R.id.nameEditText))
+        onView(withId(R.id.nameAutoCompleteTextView))
             .perform(clearText(), typeText("Curry Heights"), closeSoftKeyboard())
         onView(withId(R.id.saveFab))
             .perform(click())
@@ -69,7 +69,7 @@ class AddReviewActivityTest : KoinTest {
 
     @Test
     fun finishScreen_withReview_whenSaveClicked() {
-        onView(withId(R.id.nameEditText))
+        onView(withId(R.id.nameAutoCompleteTextView))
             .perform(clearText(), typeText("Curry Heights"), closeSoftKeyboard())
         onView(withId(R.id.reviewEditText))
             .perform(clearText(), typeText("The best Indian food!"), closeSoftKeyboard())

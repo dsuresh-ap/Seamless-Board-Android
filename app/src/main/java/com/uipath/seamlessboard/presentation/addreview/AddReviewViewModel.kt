@@ -16,6 +16,7 @@ class AddReviewViewModel(private val restaurantRepository: RestaurantRepository)
 
     private val navigationLiveData = SingleLiveEvent<AddReviewNavigationCommand>()
     fun navigationLiveData(): LiveData<AddReviewNavigationCommand> = navigationLiveData
+    fun restaurantLiveData(): LiveData<List<String>> = restaurantRepository.getRestaurantNames()
 
     val restaurantName = MutableLiveData<String>()
     val restaurantNameError = MutableLiveData<@androidx.annotation.StringRes Int?>()

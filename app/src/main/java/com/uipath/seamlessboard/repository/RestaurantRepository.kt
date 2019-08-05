@@ -14,6 +14,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 interface RestaurantRepository {
+
+    fun getRestaurantNames(): LiveData<List<String>>
+
     fun getRestaurantRatings(): DataSource.Factory<Int, RestaurantRating>
 
     fun getRestaurantReviews(restaurantId: Long): DataSource.Factory<Int, Review>
@@ -42,6 +45,8 @@ class RestaurantRepositoryImpl(
     private val db: BoardDatabase,
     private val restaurantDao: RestaurantDao
 ) : RestaurantRepository {
+
+    override fun getRestaurantNames() = restaurantDao.getRestaurantNamesLiveData()
 
     override fun getRestaurantRatings() = restaurantDao.getRestaurantRatingsDataSource()
 

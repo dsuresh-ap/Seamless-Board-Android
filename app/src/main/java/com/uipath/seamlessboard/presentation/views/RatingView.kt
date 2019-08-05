@@ -34,7 +34,7 @@ class RatingView(context: Context, attrs: AttributeSet?) : ConstraintLayout(cont
         @BindingAdapter("app:ratingAttrChanged")
         @JvmStatic
         fun setListeners(ratingView: RatingView, attrChange: InverseBindingListener) {
-            ratingView.ratingBar.setOnRatingBarChangeListener { _, rating, fromUser ->
+            ratingView.ratingBar.setOnRatingBarChangeListener { _, _, fromUser ->
                 if (fromUser) {
                     attrChange.onChange()
                 }

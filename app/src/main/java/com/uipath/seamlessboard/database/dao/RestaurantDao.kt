@@ -13,6 +13,9 @@ import com.uipath.seamlessboard.database.entity.Review
 @Dao
 interface RestaurantDao {
 
+    @Query("SELECT name FROM restaurants")
+    fun getRestaurantNamesLiveData(): LiveData<List<String>>
+
     @Transaction
     @Query("SELECT *, AVG(rv.delivery_rating) delivery_rating, AVG(rv.food_rating) food_rating FROM restaurants rs LEFT JOIN reviews rv ON rs.restaurant_id = rv.restaurant_id GROUP BY rs.restaurant_id ORDER BY rs.name")
     fun getRestaurantRatingsDataSource(): DataSource.Factory<Int, RestaurantRating>

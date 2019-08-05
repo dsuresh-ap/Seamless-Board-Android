@@ -6,11 +6,11 @@
 
     <TextView
         android:id="@+id/nameTextView"
+        style="@style/TextAppearance.MaterialComponents.Headline5"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center_vertical"
         android:text="@string/food"
-        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@id/ratingBar"
         app:layout_constraintEnd_toStartOf="@id/ratingBar"
         app:layout_constraintStart_toStartOf="parent"
