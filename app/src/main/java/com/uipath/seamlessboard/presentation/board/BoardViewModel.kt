@@ -5,9 +5,10 @@ import androidx.lifecycle.ViewModel
 import androidx.paging.toLiveData
 import com.uipath.seamlessboard.database.entity.RestaurantRating
 import com.uipath.seamlessboard.repository.RestaurantRepository
+import com.uipath.seamlessboard.repository.UserRepository
 import com.uipath.seamlessboard.utils.SingleLiveEvent
 
-class BoardViewModel(restaurantRepository: RestaurantRepository) : ViewModel() {
+class BoardViewModel(restaurantRepository: RestaurantRepository, userRepository: UserRepository) : ViewModel() {
 
     private val navigationLiveData = SingleLiveEvent<BoardNavigationCommands>()
     fun navigationLiveData(): LiveData<BoardNavigationCommands> = navigationLiveData
@@ -19,5 +20,13 @@ class BoardViewModel(restaurantRepository: RestaurantRepository) : ViewModel() {
 
     fun onRestaurantRatingClicked(rating: RestaurantRating) {
         navigationLiveData.value = BoardNavigationCommands.ShowRestaurantFragment(rating.restaurant.id)
+    }
+
+    fun onLogoutClicked() {
+        navigationLiveData.value = BoardNavigationCommands.SignOut
+    }
+
+    fun onLoggedOut() {
+        navigationLiveData.value = BoardNavigationCommands.Login
     }
 }

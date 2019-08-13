@@ -9,4 +9,7 @@
     <string name="add_review_restaurant_name_error">Restaurant Name Required</string>
     <string name="add_review_restaurant_review_error">Review Required</string>
     <string name="add_review">Add Review</string>
+    <string name="login">Login</string>
+    <string name="welcome">Welcome to the Seamless Board</string>
+    <string name="logout">Logout</string>
 </resources>

@@ -2,6 +2,7 @@ package com.uipath.seamlessboard
 
 import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.uipath.seamlessboard.injection.appModule
 import com.uipath.seamlessboard.injection.repoModule
 import com.uipath.seamlessboard.injection.roomModule
@@ -21,5 +22,7 @@ class BoardApplication : Application() {
             androidContext(this@BoardApplication)
             modules(listOf(appModule, repoModule, roomModule))
         }
+
+        FirebaseAnalytics.getInstance(this)
     }
 }

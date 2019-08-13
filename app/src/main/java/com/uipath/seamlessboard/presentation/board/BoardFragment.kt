@@ -1,18 +1,19 @@
 package com.uipath.seamlessboard.presentation.board
 
+import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.firebase.ui.auth.AuthUI
 import com.uipath.seamlessboard.R
 import com.uipath.seamlessboard.databinding.FragmentBoardBinding
 import com.uipath.seamlessboard.misc.SpaceItemDecoration
 import com.uipath.seamlessboard.presentation.board.adapter.BoardAdapter
+import com.uipath.seamlessboard.presentation.login.LoginActivity
 import kotlinx.android.synthetic.main.fragment_board.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -26,12 +27,32 @@ class BoardFragment : Fragment() {
         return fragmentBoardBinding.root
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         fragmentBoardBinding.boardViewModel = boardViewModel
 
         initAdapter()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_board, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_logout -> {
+                boardViewModel.onLogoutClicked()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     override fun onResume() {
@@ -44,8 +65,25 @@ class BoardFragment : Fragment() {
                 is BoardNavigationCommands.StartAddReviewActivity -> BoardFragmentDirections.actionBoardFragmentToAddReviewActivity()
                 is BoardNavigationCommands.ShowRestaurantFragment ->
                     BoardFragmentDirections.actionBoardFragmentToRestaurantFragment(it.restaurantId)
+                is BoardNavigationCommands.SignOut -> {
+                    activity?.run {
+                        AuthUI.getInstance().signOut(this).addOnCompleteListener { boardViewModel.onLoggedOut() }
+                    }
+                    null
+                }
+                is BoardNavigationCommands.Login -> {
+                    activity?.run {
+                        val intent = Intent(this, LoginActivity::class.java).apply {
+                            flags = (Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                        }
+                        startActivity(intent)
+                    }
+                    null
+                }
             }
-            findNavController().navigate(navDirections)
+            navDirections?.let {
+                findNavController().navigate(navDirections)
+            }
         })
     }
 
